@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class MeshColorTest : MonoBehaviour
 {
+    [SerializeField] private Transform testObject;
+    private Mesh m_mesh;
+    private Vector3[] m_vertices;
+
+    private void Start()
+    {    
+        m_mesh = GetComponent<MeshFilter>().mesh;
+        m_vertices = m_mesh.vertices;
+    }
+
     private void Update()
     {
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
-        Vector3[] vertices = mesh.vertices;
 
-        // create new colors array where the colors will be created.
-        Color[] colors = new Color[vertices.Length];
+        Color[] colors = new Color[m_vertices.Length];
 
-        for (int i = 0; i < vertices.Length; i++)
+        colors[GetVectorIndex(testObject.position)] = Color.red;
+        colors[GetVectorIndex(testObject.position + Vector3.right)] = Color.red;
+        colors[GetVectorIndex(testObject.position + Vector3.left)] = Color.red;
+        colors[GetVectorIndex(testObject.position + Vector3.forward)] = Color.red;
+        colors[GetVectorIndex(testObject.position + Vector3.back)] = Color.red;
+        m_mesh.colors = colors;
+
+    }
+
+    private int GetVectorIndex(Vector3 pos)
+    {
+        int sameIndex = 0;
+        for (int i = 0; i < m_vertices.Length; i++)
         {
-            Debug.Log(i / vertices.Length);
-            colors[i] = Color.Lerp(Color.red, Color.green, vertices[i].y);
-            //colors[i] = Color.Lerp(Color.black, Color.white, (float)i / vertices.Length);
-            //colors[i] = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-            //colors[i] = Color.green;
+            if (Mathf.Round(m_vertices[i].x) == Mathf.Round(pos.x) && Mathf.Round(m_vertices[i].z) == Mathf.Round(pos.z))
+                sameIndex = i;
         }
 
-        // assign the array of colors to the Mesh.
-        mesh.colors = colors;
-
+        return sameIndex;
     }
 }
