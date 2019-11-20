@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Controls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input/Controls.inputactions'
 
 using System;
 using System.Collections;
@@ -20,7 +20,7 @@ public class @Controls : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Press"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""faa9b70d-49e1-490a-8c9f-820aeaa68eb5"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -31,7 +31,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c2165431-806e-48eb-b2d3-e093ffb42cb2"",
-                    ""path"": ""<Touchscreen>/press"",
+                    ""path"": ""<Touchscreen>/pressure"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
