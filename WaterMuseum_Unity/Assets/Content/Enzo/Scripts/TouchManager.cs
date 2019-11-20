@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TouchManager : MonoBehaviour
 {
-    //public int tapCount;
+    public int tapCount;
     public Text tCount;
     GameObject Gobj = null;
     Plane objPlane;

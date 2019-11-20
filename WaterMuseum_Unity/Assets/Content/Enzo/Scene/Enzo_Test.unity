@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e953673fb35f1a41a1d665b51cb48f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tapCount: 0
   tCount: {fileID: 1689235414}
 --- !u!4 &21334713
 Transform:
@@ -356,7 +357,7 @@ Camera:
   m_GameObject: {fileID: 1464570159}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

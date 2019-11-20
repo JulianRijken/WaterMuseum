@@ -1,0 +1,33 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "349a3990-2c23-4174-b422-a53b4659f8c4",
+            "actions": [
+                {
+                    "name": "Press",
+                    "type": "Button",
+                    "id": "faa9b70d-49e1-490a-8c9f-820aeaa68eb5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c2165431-806e-48eb-b2d3-e093ffb42cb2",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
