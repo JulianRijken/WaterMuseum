@@ -16,6 +16,5 @@ public class InputTester : MonoBehaviour
                 Debug.Log("Old Input");
             }
         }
-
     }
 }

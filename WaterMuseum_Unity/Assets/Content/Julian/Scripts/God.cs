@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class God : MonoBehaviour
 {
     [SerializeField] string m_treeName;
+    [SerializeField] private Vector2 m_treeHeightOffest;
     private Tool m_tool;
+    private Camera mainCamera;
 
     private void Awake()
     {
+        mainCamera = Camera.main;
         SetTool(Tool.tree);
     }
 
@@ -22,7 +25,15 @@ public class GameManager : MonoBehaviour
                     Touch touch = Input.GetTouch(0);
                     if (touch.phase == TouchPhase.Began)
                     {
-                        PlaceTree(m_treeName, touch.position, Quaternion.identity);
+                        Ray ray = mainCamera.ScreenPointToRay(touch.position);
+                        RaycastHit hit;
+                        if(Physics.Raycast(ray,out hit))
+                        {
+                            Vector3 spawnPoint = hit.point;
+                            spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
+                            ObjectPooler.SpawnObject(m_treeName, spawnPoint, Quaternion.identity, true);
+                        }
+
                     }
                     break;
                 case Tool.water:
@@ -44,12 +55,6 @@ public class GameManager : MonoBehaviour
     public Tool GetTool()
     {
         return m_tool;
-    }
-
-    private void PlaceTree(string treeName,Vector3 position,Quaternion rotation)
-    {
-        ObjectPooler.SpawnObject(treeName, position, rotation, true);
-
     }
 }
 
