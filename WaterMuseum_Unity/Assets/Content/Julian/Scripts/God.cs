@@ -1,66 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class God : MonoBehaviour
 {
     [SerializeField] string m_treeName;
     [SerializeField] private Vector2 m_treeHeightOffest;
     private Tool m_tool;
-    private Camera mainCamera;
+    private Camera m_mainCamera;
 
     private void Awake()
     {
-        mainCamera = Camera.main;
-        SetTool(Tool.tree);
+        m_mainCamera = Camera.main;
+        NotificationCenter.FireToolSwitch(Tool.tree);
+        NotificationCenter.OnToolSwitch += HandleToolSwitch;
+    }
+
+    private void OnDestroy()
+    {
+        NotificationCenter.OnToolSwitch -= HandleToolSwitch;
     }
 
     private void Update()
     {
         if (Input.touchCount > 0)
         {
-            switch (m_tool)
-            {
-                case Tool.tree:
-                    Touch touch = Input.GetTouch(0);
-                    if (touch.phase == TouchPhase.Began)
-                    {
-                        Ray ray = mainCamera.ScreenPointToRay(touch.position);
-                        RaycastHit hit;
-                        if(Physics.Raycast(ray,out hit))
+            Touch touch = Input.GetTouch(0);
+            if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                switch (m_tool)
+                {
+                    case Tool.tree:
+
+                        if (touch.phase == TouchPhase.Began)
                         {
-                            Vector3 spawnPoint = hit.point;
-                            spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
-                            ObjectPooler.SpawnObject(m_treeName, spawnPoint, Quaternion.identity, true);
+                            Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
+                            RaycastHit hit;
+                            if (Physics.Raycast(ray, out hit))
+                            {
+                                Vector3 spawnPoint = hit.point;
+                                spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
+                                ObjectPooler.SpawnObject(m_treeName, spawnPoint, Quaternion.identity, true);
+                            }
                         }
 
-                    }
-                    break;
-                case Tool.water:
-                    break;
-                case Tool.shovel:
-                    break;
-                default:
-                    break;
-            }
-         
+                        break;
+                    case Tool.water:
+
+
+                        break;
+                    case Tool.shovel:
+
+
+                        break;
+                }
         }
     }
 
-    public void SetTool(Tool tool)
+    public void HandleToolSwitch(Tool tool)
     {
         m_tool = tool;
-    }
-
-    public Tool GetTool()
-    {
-        return m_tool;
     }
 }
 
 public enum Tool
 {
-    tree,
-    water,
-    shovel
+    tree = 0,
+    water = 1,
+    shovel = 2
 }
