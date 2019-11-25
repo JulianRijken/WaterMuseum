@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class DayNightCycle : MonoBehaviour {
 
     [SerializeField] [Range(0f,24f)] private float m_currentTime;
