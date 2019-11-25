@@ -30,6 +30,6 @@ public class DayNightCycle : MonoBehaviour {
         else if (m_currentTime <= 0)
             m_currentTime = 24f;
 
-        NotificationCenter.FireTimeChange(m_currentTime);
+        NotificationCenter.FireTimeChange(currentTime);
     }
 }
