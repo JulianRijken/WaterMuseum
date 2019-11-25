@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class DayNightCycle : MonoBehaviour {
 
-    [SerializeField] private float m_currentTime;
+    [SerializeField] [Range(0f,24f)] private float m_currentTime;
     [SerializeField] private float m_timeSpeed;
     [SerializeField] private Light m_sun;
     [SerializeField] private Light m_moon;
@@ -13,14 +14,19 @@ public class DayNightCycle : MonoBehaviour {
 
     private void Update()
     {
+        m_currentTime += Time.deltaTime / 60f * m_timeSpeed;
+        UpdateTime();
+    }
+
+    private void UpdateTime()
+    {
         m_sun.intensity = m_dayLightCurve.Evaluate(m_currentTime / 24f);
         m_moon.intensity = m_nightLightCurve.Evaluate(m_currentTime / 24f);
 
-        m_currentTime += Time.deltaTime / 60f * m_timeSpeed;
-        transform.eulerAngles = Vector3.left * Mathf.Lerp(0 , 360 , m_currentTime / 24f);
+        transform.eulerAngles = Vector3.left * Mathf.Lerp(0, 360, m_currentTime / 24f);
 
-        if(m_currentTime >= 24f) 
-            m_currentTime = 0; 
+        if (m_currentTime >= 24f)
+            m_currentTime = 0;
         else if (m_currentTime <= 0)
             m_currentTime = 24f;
 

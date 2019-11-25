@@ -227,29 +227,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f692a6f4b43a954eaaaa404ee50a3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTime: 0
-  sun: {fileID: 8340901920690171365}
-  moon: {fileID: 8340901920921105383}
+  m_currentTime: 0
+  m_timeSpeed: 6
+  m_sun: {fileID: 8340901920690171365}
+  m_moon: {fileID: 8340901920921105383}
   m_dayLightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -2
+      outSlope: -2
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -260,20 +270,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
+      inSlope: -1.9999628
+      outSlope: -1.9999628
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.000018566847
       inSlope: 0
       outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 1.9999628
+      outSlope: 1.9999628
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
