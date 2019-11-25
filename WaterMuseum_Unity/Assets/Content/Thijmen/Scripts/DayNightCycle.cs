@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour {
 
-    [SerializeField] private float currentTime;
-    [SerializeField] private Light sun;
-    [SerializeField] private Light moon;
+    [SerializeField] private float m_currentTime;
+    [SerializeField] private float m_timeSpeed;
+    [SerializeField] private Light m_sun;
+    [SerializeField] private Light m_moon;
     [SerializeField] private AnimationCurve m_dayLightCurve;
     [SerializeField] private AnimationCurve m_nightLightCurve;
 
-    // JULIAN VOOR THIJMEN: ZOG DAT DE ZON INTENSITY LAGER WORD ALS HIJ ONDER GAAT EN OP 0 STAAT ALS HIJ HELEMAAL WEG IS
+    private void Update()
+    {
+        m_sun.intensity = m_dayLightCurve.Evaluate(m_currentTime / 24f);
+        m_moon.intensity = m_nightLightCurve.Evaluate(m_currentTime / 24f);
 
-    void Update() {
+        m_currentTime += Time.deltaTime / 60f * m_timeSpeed;
+        transform.eulerAngles = Vector3.left * Mathf.Lerp(0 , 360 , m_currentTime / 24f);
 
-        sun.intensity = m_dayLightCurve.Evaluate(currentTime / 24f);
-        moon.intensity = m_nightLightCurve.Evaluate(currentTime / 24f);
+        if(m_currentTime >= 24f) 
+            m_currentTime = 0; 
+        else if (m_currentTime <= 0)
+            m_currentTime = 24f;
 
-        currentTime += Time.deltaTime / 60 * 4; //Makes 1 day = 6 minutes.
-        transform.eulerAngles = Vector3.left * Mathf.Lerp( 0 , 360 , currentTime / 24f);
-        if(currentTime > 24) {
-            currentTime = 0; 
-        }
+        NotificationCenter.FireTimeChange(m_currentTime);
     }
 }
