@@ -28,6 +28,13 @@ public class Rock : MonoBehaviour
                 meshCollider.sharedMesh = meshFilter.mesh;
         }
 
+
+    }
+
+    private void OnEnable()
+    {
+        m_rigidbody.isKinematic = false;
+        m_timeAlive = 0;
         transform.localScale = Vector3.zero;
         m_finalSize = Vector3.one * Random.Range(2f, 5f);
     }
@@ -38,10 +45,10 @@ public class Rock : MonoBehaviour
 
         m_timeAlive += Time.deltaTime;
 
-        if (m_rigidbody != null)
+        if (m_rigidbody.isKinematic == false)
             if (m_rigidbody.velocity.magnitude < m_stopVelocity && m_timeAlive > m_stopLifeTime && m_rigidbody.angularVelocity.magnitude < m_stopAngularVelocity)
             {
-                Destroy(m_rigidbody);
+                m_rigidbody.isKinematic = true;
                 m_finalPos = transform.position + Vector3.down * m_groundDistance;
                 StartCoroutine(MoveToFinalPos());
             }
