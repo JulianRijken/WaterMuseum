@@ -345,7 +345,7 @@ MonoBehaviour:
   Plasticprefab: {fileID: 5023013769596511225, guid: 048b35f98e4c5e448bce6d550be30726,
     type: 3}
   center: {x: 0, y: 0, z: 0}
-  size: {x: 5, y: 5, z: 5}
+  size: {x: 26.62, y: 0.55, z: 22.74}
 --- !u!4 &1455870205
 Transform:
   m_ObjectHideFlags: 0
