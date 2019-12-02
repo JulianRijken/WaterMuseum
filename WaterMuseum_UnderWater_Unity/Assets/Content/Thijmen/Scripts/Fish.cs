@@ -68,7 +68,15 @@ public class Fish : MonoBehaviour {
         }
 
         if(spottedObstacleL && spottedObstacleR) {
-            transform.Rotate( transform.up * Time.deltaTime * -rotSpeed );
+            int rndDir = Random.Range( 1 , 3 );
+
+            if(rndDir == 1) {
+                transform.Rotate( transform.up * Time.deltaTime * rotSpeed );
+            }
+
+            if(rndDir == 2) {
+                transform.Rotate( transform.up * Time.deltaTime * -rotSpeed );
+            }
         }
     }
 

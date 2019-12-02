@@ -27,8 +27,6 @@ public class Rock : MonoBehaviour
             if (meshCollider != null)
                 meshCollider.sharedMesh = meshFilter.mesh;
         }
-
-
     }
 
     private void OnEnable()
@@ -52,8 +50,6 @@ public class Rock : MonoBehaviour
                 m_finalPos = transform.position + Vector3.down * m_groundDistance;
                 StartCoroutine(MoveToFinalPos());
             }
-
-
     }
 
     private IEnumerator MoveToFinalPos()
