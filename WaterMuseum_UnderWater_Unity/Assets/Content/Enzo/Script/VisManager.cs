@@ -13,6 +13,9 @@ public class VisManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameObject.FindGameObjectsWithTag("Koraal").Length > 10)
+        {
+            //doe iets
+        }
     }
 }
