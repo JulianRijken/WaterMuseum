@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9011616624752922997}
   - component: {fileID: 9011616624752922998}
   - component: {fileID: 6199311197618474294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9011616624752922992}
-  m_LocalRotation: {x: 0.19885638, y: -0.3145439, z: -0.3140033, w: 0.8734531}
+  m_LocalRotation: {x: 0.19885466, y: -0.31454426, z: -0.31400156, w: 0.873454}
   m_LocalPosition: {x: -6.1, y: 16.72, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9011616624752922992}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -6413750109319685827, guid: a8b1bdeea1ea63041b8f410a24f7a2bf, type: 3}
 --- !u!23 &9011616624752922994
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 55a063f33c9cb9148aa1bcddafd565cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,15 +113,13 @@ MonoBehaviour:
   m_stopVelocity: 0.1
   m_stopAngularVelocity: 0.1
   m_stopLifeTime: 5
-  m_groundDistance: 1.5
+  m_groundDistance: 1
   m_moveSpeed: 1
   m_rockMeshes:
   - {fileID: -6413750109319685827, guid: a8b1bdeea1ea63041b8f410a24f7a2bf, type: 3}
   - {fileID: -448245740997676312, guid: 15050bce61f03e641aba74dcdd203715, type: 3}
   - {fileID: 21906025000962182, guid: 6280639674603eb4689fc2666bb6a996, type: 3}
   - {fileID: -3502429308536540143, guid: f3a36df9a37438c469d846f7032ef105, type: 3}
-  - {fileID: -7228239601360751719, guid: d2aa5dfc2180d9e4eaa5869d3aa473ea, type: 3}
-  - {fileID: -7003557966073997932, guid: 9d118cf74c53db443b7107fc27a658ef, type: 3}
   - {fileID: 7309613514892262955, guid: 1e77e4e2923a81646afa48583fde4c73, type: 3}
 --- !u!64 &6199311197618474294
 MeshCollider:

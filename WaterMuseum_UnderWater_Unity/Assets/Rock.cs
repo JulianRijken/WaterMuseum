@@ -13,6 +13,7 @@ public class Rock : MonoBehaviour
     [SerializeField] private Mesh[] m_rockMeshes;
 
     private Vector3 m_finalPos;
+    private Vector3 m_finalSize;
     private float m_timeAlive = 0;
 
     private void Start()
@@ -27,12 +28,14 @@ public class Rock : MonoBehaviour
                 meshCollider.sharedMesh = meshFilter.mesh;
         }
 
-        transform.localScale = Vector3.one * Random.Range(1f, 5f);
-
+        transform.localScale = Vector3.zero;
+        m_finalSize = Vector3.one * Random.Range(2f, 5f);
     }
 
     private void Update()
     {
+        transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize, 5f * Time.deltaTime);
+
         m_timeAlive += Time.deltaTime;
 
         if (m_rigidbody != null)

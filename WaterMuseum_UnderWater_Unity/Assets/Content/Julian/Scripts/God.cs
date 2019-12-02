@@ -8,6 +8,9 @@ public class God : MonoBehaviour
     [SerializeField] string m_treeName;
     [SerializeField] private Vector2 m_treeHeightOffest;
     [SerializeField] private Vector3 m_placeOffset;
+    [SerializeField] private int m_maxStones;
+    [SerializeField] private LayerMask m_terrainLayer;
+    [SerializeField] private LayerMask m_rockLayer;
 
     private int m_spawnedCout = 0;
     private Camera m_mainCamera;
@@ -32,6 +35,8 @@ public class God : MonoBehaviour
     private void Update()
     {
 
+        
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -41,16 +46,34 @@ public class God : MonoBehaviour
                 {
                     if (m_selectedTool == Tool.place)
                     {
-                        Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
-                        RaycastHit hit;
-                        if (Physics.Raycast(ray, out hit))
+                        if (m_spawnedCout < m_maxStones)
                         {
-                            Vector3 spawnPoint = hit.point;
-                            spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
-                            ObjectPooler.SpawnObject(m_treeName, spawnPoint + m_placeOffset, Quaternion.identity, true);
-                            m_spawnedCout++;
+                            Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
+                            RaycastHit hit;
+                            if (Physics.Raycast(ray, out hit,m_terrainLayer))
+                            {
+                                Vector3 spawnPoint = hit.point;
+                                spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
+                                ObjectPooler.SpawnObject(m_treeName, spawnPoint + m_placeOffset, Quaternion.identity, true);
+                                m_spawnedCout++;
+                            }
                         }
                     }
+                    else
+                    {
+                        Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
+                        RaycastHit hit;
+                        if (Physics.Raycast(ray, out hit, m_rockLayer))
+                        {
+                            Rock rock = hit.collider.GetComponent<Rock>();
+                            if (rock != null)
+                            {
+                                rock.gameObject.SetActive(false);
+                                m_spawnedCout--;
+                            }
+                        }
+                    }
+                        
                 }
             }
         }
