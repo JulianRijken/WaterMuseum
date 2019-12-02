@@ -1037,9 +1037,9 @@ MonoBehaviour:
   m_terrainLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_rockLayer:
+  m_removeLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
 --- !u!4 &1318470751
 Transform:
   m_ObjectHideFlags: 0
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 1351467861}
   - component: {fileID: 1351467860}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlasticSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

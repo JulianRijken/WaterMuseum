@@ -10,7 +10,7 @@ public class God : MonoBehaviour
     [SerializeField] private Vector3 m_placeOffset;
     [SerializeField] private int m_maxStones;
     [SerializeField] private LayerMask m_terrainLayer;
-    [SerializeField] private LayerMask m_rockLayer;
+    [SerializeField] private LayerMask m_removeLayer;
 
     private int m_spawnedCout = 0;
     private Camera m_mainCamera;
@@ -63,7 +63,7 @@ public class God : MonoBehaviour
                     {
                         Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
                         RaycastHit hit;
-                        if (Physics.Raycast(ray, out hit, m_rockLayer))
+                        if (Physics.Raycast(ray, out hit, m_removeLayer))
                         {
                             Rock rock = hit.collider.GetComponent<Rock>();
                             if (rock != null)
