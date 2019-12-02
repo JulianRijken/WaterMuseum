@@ -17,5 +17,6 @@ public class VisManager : MonoBehaviour
         {
             //doe iets
         }
+
     }
 }
