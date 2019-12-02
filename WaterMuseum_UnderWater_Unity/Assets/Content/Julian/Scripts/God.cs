@@ -7,12 +7,26 @@ public class God : MonoBehaviour
 {
     [SerializeField] string m_treeName;
     [SerializeField] private Vector2 m_treeHeightOffest;
+    [SerializeField] private Vector3 m_placeOffset;
 
+    private int m_spawnedCout = 0;
     private Camera m_mainCamera;
+    private Tool m_selectedTool;
 
     private void Awake()
     {
         m_mainCamera = Camera.main;
+
+        NotificationCenter.OnToolSwitch += HandleToolSwitch;
+    }
+    private void OnDestroy()
+    {
+        NotificationCenter.OnToolSwitch -= HandleToolSwitch;
+    }
+
+    private void HandleToolSwitch(Tool newTool)
+    {
+        m_selectedTool = newTool;
     }
 
     private void Update()
@@ -25,13 +39,17 @@ public class God : MonoBehaviour
             {
                 if (touch.phase == TouchPhase.Began)
                 {
-                    Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit))
+                    if (m_selectedTool == Tool.place)
                     {
-                        Vector3 spawnPoint = hit.point;
-                        spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
-                        ObjectPooler.SpawnObject(m_treeName, spawnPoint, Quaternion.identity, true);
+                        Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
+                        RaycastHit hit;
+                        if (Physics.Raycast(ray, out hit))
+                        {
+                            Vector3 spawnPoint = hit.point;
+                            spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
+                            ObjectPooler.SpawnObject(m_treeName, spawnPoint + m_placeOffset, Quaternion.identity, true);
+                            m_spawnedCout++;
+                        }
                     }
                 }
             }
