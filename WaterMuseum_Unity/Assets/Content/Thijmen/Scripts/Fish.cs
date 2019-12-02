@@ -80,9 +80,9 @@ public class Fish : MonoBehaviour {
 
         rotTime = Random.Range( 1 , 3 );
         rotWait = Random.Range( 1 , 3 );
-        rotLR = Random.Range( 1 , 3 );
-        walkWait = Random.Range( 1 , 4 );
-        walkTime = Random.Range( 1 , 5 );
+        rotLR = Random.Range( 1 , 2 );
+        walkWait = Random.Range( 1 , 3 );
+        walkTime = Random.Range( 1 , 3 );
 
         isWandering = true;
 
