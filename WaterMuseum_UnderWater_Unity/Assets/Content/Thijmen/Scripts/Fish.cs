@@ -43,14 +43,12 @@ public class Fish : MonoBehaviour {
 
         if(Physics.Raycast( transform.position , right , reach )) {
             Debug.DrawRay( transform.position , transform.TransformDirection( Vector3.right + Vector3.forward ) * reach , Color.red );
-            print( "There is something in front of the object!" );
             rotSpeed = 300;
             spottedObstacleR = true;
             transform.Rotate( transform.up * Time.deltaTime * -rotSpeed );
 
         } else {
             Debug.DrawRay( transform.position , transform.TransformDirection( Vector3.right + Vector3.forward ) * reach , Color.white );
-            print( "There is nothing in front of the object!" );
             spottedObstacleR = false;
             rotSpeed = 100;
         }
@@ -59,14 +57,12 @@ public class Fish : MonoBehaviour {
 
         if(Physics.Raycast( transform.position , left , reach )) {
             Debug.DrawRay( transform.position , transform.TransformDirection( Vector3.left + Vector3.forward ) * reach , Color.red );
-            print( "There is something in front of the object!" );
             rotSpeed = 300;
             spottedObstacleL = true;
             transform.Rotate( transform.up * Time.deltaTime * -rotSpeed );
 
         } else {
             Debug.DrawRay( transform.position , transform.TransformDirection( Vector3.left + Vector3.forward ) * reach , Color.white );
-            print( "There is nothing in front of the object!" );
             spottedObstacleL = false;
             rotSpeed = 100;
         }
