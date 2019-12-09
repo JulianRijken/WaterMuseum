@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 public class God : MonoBehaviour
 {
     [SerializeField] string m_rockName;
-    [SerializeField] private Vector2 m_treeHeightOffest;
-    [SerializeField] private Vector3 m_placeOffset;
     [SerializeField] private int m_maxStones;
+    [SerializeField] private Vector3 m_placeOffset;
     [SerializeField] private LayerMask m_terrainLayer;
     [SerializeField] private LayerMask m_removeLayer;
 
@@ -48,8 +47,7 @@ public class God : MonoBehaviour
                             RaycastHit hit;
                             if (Physics.Raycast(ray, out hit,m_terrainLayer))
                             {
-                                Vector3 spawnPoint = hit.point;
-                                spawnPoint.y += Random.Range(m_treeHeightOffest.x, m_treeHeightOffest.y);
+                                Vector3 spawnPoint = hit.point + m_placeOffset;
                                 ObjectPooler.SpawnObject(m_rockName, spawnPoint + m_placeOffset, Quaternion.identity, true);
                                 Stats.GetSheet().m_rockCount++;
                             }

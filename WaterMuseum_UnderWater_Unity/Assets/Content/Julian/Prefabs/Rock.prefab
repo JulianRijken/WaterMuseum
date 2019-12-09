@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9011616624752922994}
   - component: {fileID: 9011616624752922997}
   - component: {fileID: 9011616624752922998}
-  - component: {fileID: 6199311197618474294}
+  - component: {fileID: 7388844039589737668}
   m_Layer: 8
   m_Name: Rock
   m_TagString: Untagged
@@ -57,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -121,7 +122,7 @@ MonoBehaviour:
   - {fileID: 21906025000962182, guid: 6280639674603eb4689fc2666bb6a996, type: 3}
   - {fileID: -3502429308536540143, guid: f3a36df9a37438c469d846f7032ef105, type: 3}
   - {fileID: 7309613514892262955, guid: 1e77e4e2923a81646afa48583fde4c73, type: 3}
---- !u!64 &6199311197618474294
+--- !u!64 &7388844039589737668
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,5 +134,5 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6413750109319685827, guid: a8b1bdeea1ea63041b8f410a24f7a2bf, type: 3}
