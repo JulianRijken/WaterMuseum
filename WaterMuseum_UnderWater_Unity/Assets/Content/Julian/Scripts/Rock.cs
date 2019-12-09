@@ -9,16 +9,21 @@ public class Rock : MonoBehaviour, IRemovable
     [SerializeField] private float m_stopLifeTime;
     [SerializeField] private float m_groundDistance;
     [SerializeField] private float m_moveSpeed;
-    //[SerializeField] private Vector2 m_;
     [SerializeField] private Mesh[] m_rockMeshes;
     [SerializeField] private Rigidbody m_rigidbody;
-    [SerializeField] private GameObject m_coralPrefabs;
-
     private StatsSheet m_stats;
-    private GameObject m_coral;
     private Vector3 m_finalPos;
     private Vector3 m_finalSize;
     private float m_timeAlive = 0;
+
+
+    [Header("Coral")]
+    [SerializeField] private Vector2 m_randomCoralSize;
+    [SerializeField] private GameObject m_coralPrefabs;
+    [SerializeField] private float m_coralPostionOffset;
+    private GameObject m_childCoral;
+    private float m_coralSize;
+
 
     private void Start()
     {
@@ -48,7 +53,7 @@ public class Rock : MonoBehaviour, IRemovable
 
         if (!m_rigidbody.isKinematic)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize, 5f * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize, 20f * Time.deltaTime);
             m_timeAlive += Time.deltaTime;
 
             if (m_rigidbody.velocity.magnitude < m_stopVelocity && m_timeAlive > m_stopLifeTime && m_rigidbody.angularVelocity.magnitude < m_stopAngularVelocity)
@@ -60,15 +65,17 @@ public class Rock : MonoBehaviour, IRemovable
         }
         else
         {
-            if (m_coral == null)
+            if (m_childCoral == null)
             {
-                m_coral = Instantiate(m_coralPrefabs, transform.position, Quaternion.identity);
+                m_coralSize = Random.Range(m_randomCoralSize.x, m_randomCoralSize.y);
+
+                Vector3 spawnPos = transform.position + Vector3.right * Random.Range(-m_coralPostionOffset, m_coralPostionOffset) + Vector3.forward * Random.Range(-m_coralPostionOffset, m_coralPostionOffset);
+                // Random Rotation Offset
+                m_childCoral = Instantiate(m_coralPrefabs, spawnPos, Quaternion.identity);
             }
             else
             {
-                m_coral.transform.localScale = Vector3.MoveTowards(m_coral.transform.localScale, Vector3.one * 5,Time.deltaTime);
-
-
+                m_childCoral.transform.localScale = Vector3.MoveTowards(m_childCoral.transform.localScale, Vector3.one * m_coralSize, Time.deltaTime);
             }
 
             
@@ -86,7 +93,7 @@ public class Rock : MonoBehaviour, IRemovable
 
     public void OnRemove()
     {
-        Destroy(m_coral);
+        Destroy(m_childCoral);
         gameObject.SetActive(false);
         Stats.GetSheet().m_rockCount--;
     }

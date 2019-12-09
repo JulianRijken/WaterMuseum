@@ -113,7 +113,7 @@ MonoBehaviour:
   m_stopVelocity: 0.1
   m_stopAngularVelocity: 0.1
   m_stopLifeTime: 5
-  m_groundDistance: 2
+  m_groundDistance: 1
   m_moveSpeed: 1
   m_rockMeshes:
   - {fileID: -6413750109319685827, guid: a8b1bdeea1ea63041b8f410a24f7a2bf, type: 3}
@@ -122,8 +122,10 @@ MonoBehaviour:
   - {fileID: -3502429308536540143, guid: f3a36df9a37438c469d846f7032ef105, type: 3}
   - {fileID: 7309613514892262955, guid: 1e77e4e2923a81646afa48583fde4c73, type: 3}
   m_rigidbody: {fileID: 9011616624752922997}
+  m_randomCoralSize: {x: 1, y: 4}
   m_coralPrefabs: {fileID: 3092401270805740916, guid: 8bcfc7480d5081f429a48261a8b1e71a,
     type: 3}
+  m_coralPostionOffset: 0.5
 --- !u!64 &7388844039589737668
 MeshCollider:
   m_ObjectHideFlags: 0
