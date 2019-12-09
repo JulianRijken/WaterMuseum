@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rock : MonoBehaviour
+public class Rock : MonoBehaviour, IRemovable
 {
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private float m_stopVelocity;
@@ -61,5 +61,9 @@ public class Rock : MonoBehaviour
         }
     }
 
-    
+    public void OnRemove()
+    {
+        gameObject.SetActive(false);
+        Stats.GetSheet().m_rockCount--;
+    }
 }

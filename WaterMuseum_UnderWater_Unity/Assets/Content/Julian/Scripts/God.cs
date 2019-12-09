@@ -59,8 +59,11 @@ public class God : MonoBehaviour
                         RaycastHit hit;
                         if (Physics.Raycast(ray, out hit, m_removeLayer))
                         {
-                            // Turn The object to false
-                            hit.collider.gameObject.SetActive(false);
+                            IRemovable removable = hit.collider.GetComponent<IRemovable>();
+                            if (removable != null)
+                            {
+                                removable.OnRemove();
+                            }
                         }
                     }
                         

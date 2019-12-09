@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4745115904709109058}
   - component: {fileID: 4745115904709109057}
-  - component: {fileID: 504065389514316418}
+  - component: {fileID: 6814703315649897135}
   m_Layer: 0
   m_Name: DevPreload
   m_TagString: Untagged
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   appGameObjectName: AppPreload
---- !u!114 &504065389514316418
+--- !u!114 &6814703315649897135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

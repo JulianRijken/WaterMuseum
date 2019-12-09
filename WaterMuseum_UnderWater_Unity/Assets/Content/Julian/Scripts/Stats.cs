@@ -21,6 +21,16 @@ public class Stats : MonoBehaviour
         return m_instance.m_sheet;
     }
 
+#if UNITY_EDITOR
+    private void OnGUI()
+    {
+        StatsSheet sheet = GetSheet();
+        GUILayout.Label("rockCount Count: " + sheet.m_rockCount);
+        GUILayout.Label("plasticCount Count: " + sheet.m_plasticCount);
+        GUILayout.Label("fishCount Count: " + sheet.m_fishCount);
+        GUILayout.Label("coralCount Count: " + sheet.m_coralCount);
+    }
+#endif
 }
 
 public class StatsSheet
@@ -28,6 +38,5 @@ public class StatsSheet
     public int m_rockCount;
     public int m_plasticCount;
     public int m_fishCount;
-    //public int m_sharkCount;
     public int m_coralCount;
 }
