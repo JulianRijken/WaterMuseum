@@ -39,17 +39,23 @@ public class Rock : MonoBehaviour, IRemovable
 
     private void Update()
     {
-        transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize, 5f * Time.deltaTime);
 
-        m_timeAlive += Time.deltaTime;
+        if (!m_rigidbody.isKinematic)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize, 5f * Time.deltaTime);
+            m_timeAlive += Time.deltaTime;
 
-        if (m_rigidbody.isKinematic == false)
             if (m_rigidbody.velocity.magnitude < m_stopVelocity && m_timeAlive > m_stopLifeTime && m_rigidbody.angularVelocity.magnitude < m_stopAngularVelocity)
             {
                 m_rigidbody.isKinematic = true;
                 m_finalPos = transform.position + Vector3.down * m_groundDistance;
                 StartCoroutine(MoveToFinalPos());
             }
+        }
+        else
+        {
+
+        }
     }
 
     private IEnumerator MoveToFinalPos()
