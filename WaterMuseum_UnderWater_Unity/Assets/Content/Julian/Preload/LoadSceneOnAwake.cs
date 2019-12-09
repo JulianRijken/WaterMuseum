@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneOnAwake : MonoBehaviour
 {
+
     [SerializeField] private int m_sceneIndex = 0;
 
     private void Awake()

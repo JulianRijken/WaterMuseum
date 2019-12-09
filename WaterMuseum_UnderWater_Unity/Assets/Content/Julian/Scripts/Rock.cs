@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Rock : MonoBehaviour, IRemovable
 {
-    [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private float m_stopVelocity;
     [SerializeField] private float m_stopAngularVelocity;
     [SerializeField] private float m_stopLifeTime;
     [SerializeField] private float m_groundDistance;
     [SerializeField] private float m_moveSpeed;
+    //[SerializeField] private Vector2 m_;
     [SerializeField] private Mesh[] m_rockMeshes;
+    [SerializeField] private Rigidbody m_rigidbody;
+    [SerializeField] private GameObject m_coralPrefabs;
 
+    private StatsSheet m_stats;
+    private GameObject m_coral;
     private Vector3 m_finalPos;
     private Vector3 m_finalSize;
     private float m_timeAlive = 0;
 
     private void Start()
     {
+        m_stats = Stats.GetSheet();
+
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if (meshFilter != null)
         {
@@ -54,7 +60,18 @@ public class Rock : MonoBehaviour, IRemovable
         }
         else
         {
+            if (m_coral == null)
+            {
+                m_coral = Instantiate(m_coralPrefabs, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                m_coral.transform.localScale = Vector3.MoveTowards(m_coral.transform.localScale, Vector3.one * 5,Time.deltaTime);
 
+
+            }
+
+            
         }
     }
 
@@ -69,6 +86,7 @@ public class Rock : MonoBehaviour, IRemovable
 
     public void OnRemove()
     {
+        Destroy(m_coral);
         gameObject.SetActive(false);
         Stats.GetSheet().m_rockCount--;
     }
