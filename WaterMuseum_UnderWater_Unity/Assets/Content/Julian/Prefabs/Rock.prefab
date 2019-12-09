@@ -92,7 +92,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 4
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_stopVelocity: 0.1
   m_stopAngularVelocity: 0.1
   m_stopLifeTime: 5
-  m_groundDistance: 1
+  m_groundDistance: 2
   m_moveSpeed: 1
   m_rockMeshes:
   - {fileID: -6413750109319685827, guid: a8b1bdeea1ea63041b8f410a24f7a2bf, type: 3}

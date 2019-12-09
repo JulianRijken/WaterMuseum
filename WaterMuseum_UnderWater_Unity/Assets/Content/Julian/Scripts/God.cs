@@ -59,12 +59,8 @@ public class God : MonoBehaviour
                         RaycastHit hit;
                         if (Physics.Raycast(ray, out hit, m_removeLayer))
                         {
-                            Rock rock = hit.collider.GetComponent<Rock>();
-                            if (rock != null)
-                            {
-                                rock.gameObject.SetActive(false);
-                                Stats.GetSheet().m_rockCount--;
-                            }
+                            // Turn The object to false
+                            hit.collider.gameObject.SetActive(false);
                         }
                     }
                         

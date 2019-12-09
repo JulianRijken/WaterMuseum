@@ -20,6 +20,7 @@ public class Stats : MonoBehaviour
     {
         return m_instance.m_sheet;
     }
+
 }
 
 public class StatsSheet
@@ -27,6 +28,6 @@ public class StatsSheet
     public int m_rockCount;
     public int m_plasticCount;
     public int m_fishCount;
-    public int m_sharkCount;
+    //public int m_sharkCount;
     public int m_coralCount;
 }
