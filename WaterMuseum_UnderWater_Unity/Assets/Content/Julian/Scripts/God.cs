@@ -51,7 +51,7 @@ public class God : MonoBehaviour
                 {
                     if (m_selectedTool == Tool.place)
                     {
-                        if (Stats.GetSheet().m_rockCount < m_maxStones)
+                        if (Stats.Sheet.m_rockCount < m_maxStones)
                         {
                             Ray ray = m_mainCamera.ScreenPointToRay(touch.position);
                             RaycastHit hit;
@@ -62,7 +62,7 @@ public class God : MonoBehaviour
                                     StartCoroutine(DelayRock());
                                     Vector3 spawnPoint = hit.point + m_placeOffset;
                                     ObjectPooler.SpawnObject(m_rockName, spawnPoint + m_placeOffset, Quaternion.identity, true);
-                                    Stats.GetSheet().m_rockCount++;
+                                    Stats.Sheet.m_rockCount++;
                                 }
                             }
                         }

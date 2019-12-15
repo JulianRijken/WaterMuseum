@@ -27,7 +27,7 @@ public class Rock : MonoBehaviour, IRemovable
 
     private void Start()
     {
-        m_stats = Stats.GetSheet();
+        m_stats = Stats.Sheet;
 
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if (meshFilter != null)
@@ -72,6 +72,7 @@ public class Rock : MonoBehaviour, IRemovable
                 Vector3 spawnPos = transform.position + Vector3.right * Random.Range(-m_coralPostionOffset, m_coralPostionOffset) + Vector3.forward * Random.Range(-m_coralPostionOffset, m_coralPostionOffset);
                 // Random Rotation Offset
                 m_childCoral = Instantiate(m_coralPrefabs, spawnPos, Quaternion.identity);
+                Stats.Sheet.m_coralCount++;
             }
             else
             {
@@ -95,6 +96,6 @@ public class Rock : MonoBehaviour, IRemovable
     {
         Destroy(m_childCoral);
         gameObject.SetActive(false);
-        Stats.GetSheet().m_rockCount--;
+        Stats.Sheet.m_rockCount--;
     }
 }

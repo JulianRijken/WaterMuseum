@@ -6,7 +6,7 @@ public class Plastic : MonoBehaviour, IRemovable
 {
     public void OnRemove()
     {
-        Stats.GetSheet().m_plasticCount--;
+        Stats.Sheet.m_plasticCount--;
         gameObject.SetActive(false);
     }
 }

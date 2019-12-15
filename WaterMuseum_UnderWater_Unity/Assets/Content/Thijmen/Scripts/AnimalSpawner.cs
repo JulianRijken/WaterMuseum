@@ -24,7 +24,7 @@ public class AnimalSpawner : MonoBehaviour {
             rndAnimal = Random.Range( 0 , animals.Length);
             rndSpawnLoc = Random.Range( 0 , spawnPoints.Length);
 
-            if(Stats.GetSheet().m_plasticCount <= 2 && Stats.GetSheet().m_rockCount >= 5) {
+            if(Stats.Sheet.m_plasticCount <= 2 && Stats.Sheet.m_rockCount >= 5) {
                 Instantiate( animals[rndAnimal] , spawnPoints[rndSpawnLoc].position , transform.rotation );
             }
 

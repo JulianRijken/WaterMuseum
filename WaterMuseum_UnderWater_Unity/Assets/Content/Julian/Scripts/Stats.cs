@@ -7,6 +7,7 @@ public class Stats : MonoBehaviour
 
     public static Stats m_instance;
     private StatsSheet m_sheet;
+    public static StatsSheet Sheet { get => m_instance.m_sheet; }
 
     private void Awake()
     {
@@ -16,15 +17,11 @@ public class Stats : MonoBehaviour
         m_sheet = new StatsSheet();
     }
 
-    public static StatsSheet GetSheet()
-    {
-        return m_instance.m_sheet;
-    }
 
 #if UNITY_EDITOR
     private void OnGUI()
     {
-        StatsSheet sheet = GetSheet();
+        StatsSheet sheet = Sheet;
         GUILayout.Label("rockCount Count: " + sheet.m_rockCount);
         GUILayout.Label("plasticCount Count: " + sheet.m_plasticCount);
         GUILayout.Label("fishCount Count: " + sheet.m_fishCount);
