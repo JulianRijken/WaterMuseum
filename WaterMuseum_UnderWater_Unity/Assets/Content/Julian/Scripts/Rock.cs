@@ -11,10 +11,11 @@ public class Rock : MonoBehaviour, IRemovable
     [SerializeField] private float m_moveSpeed;
     [SerializeField] private Mesh[] m_rockMeshes;
     [SerializeField] private Rigidbody m_rigidbody;
+    private MeshFilter m_meshFilter;
     private StatsSheet m_stats;
-    private Vector3 m_finalPos;
-    private Vector3 m_finalSize;
+    private float m_finalSize;
     private float m_timeAlive = 0;
+    private bool m_finished;
 
 
     [Header("Coral")]
@@ -27,11 +28,14 @@ public class Rock : MonoBehaviour, IRemovable
 
     private void Start()
     {
+
         m_stats = Stats.Sheet;
+        m_finished = false;
 
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if (meshFilter != null)
         {
+            m_meshFilter = meshFilter;
             meshFilter.mesh = m_rockMeshes[Random.Range(0, m_rockMeshes.Length)];
 
             MeshCollider meshCollider = GetComponent<MeshCollider>();
@@ -45,7 +49,7 @@ public class Rock : MonoBehaviour, IRemovable
         m_rigidbody.isKinematic = false;
         m_timeAlive = 0;
         transform.localScale = Vector3.zero;
-        m_finalSize = Vector3.one * Random.Range(2f, 5f);
+        m_finalSize = Random.Range(2f, 5f);
     }
 
     private void Update()
@@ -53,26 +57,31 @@ public class Rock : MonoBehaviour, IRemovable
 
         if (!m_rigidbody.isKinematic)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize, 20f * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, m_finalSize * Vector3.one, 20f * Time.deltaTime);
             m_timeAlive += Time.deltaTime;
 
             if (m_rigidbody.velocity.magnitude < m_stopVelocity && m_timeAlive > m_stopLifeTime && m_rigidbody.angularVelocity.magnitude < m_stopAngularVelocity)
             {
                 m_rigidbody.isKinematic = true;
-                m_finalPos = transform.position + Vector3.down * m_groundDistance;
-                StartCoroutine(MoveToFinalPos());
+                Vector3 finalPos = transform.position + Vector3.down * m_groundDistance;
+                StartCoroutine(MoveToFinalPos(finalPos));
             }
         }
-        else
+        else if(m_finished)
         {
             if (m_childCoral == null)
             {
+
                 m_coralSize = Random.Range(m_randomCoralSize.x, m_randomCoralSize.y);
 
-                Vector3 spawnPos = transform.position + Vector3.right * Random.Range(-m_coralPostionOffset, m_coralPostionOffset) + Vector3.forward * Random.Range(-m_coralPostionOffset, m_coralPostionOffset);
-                // Random Rotation Offset
+                Vector3[] vertices = m_meshFilter.mesh.vertices;
+
+
+                Vector3 spawnPos = (vertices[Random.Range(0, vertices.Length)] * m_finalSize) + transform.position;
+                Debug.DrawLine(spawnPos, transform.position, Color.red, 10f);
                 m_childCoral = Instantiate(m_coralPrefabs, spawnPos, Quaternion.identity);
                 Stats.Sheet.m_coralCount++;
+
             }
             else
             {
@@ -83,13 +92,15 @@ public class Rock : MonoBehaviour, IRemovable
         }
     }
 
-    private IEnumerator MoveToFinalPos()
+    private IEnumerator MoveToFinalPos(Vector3 finalPos)
     {
-        while(transform.position != m_finalPos)
+        while(transform.position != finalPos)
         {
-            transform.position = Vector3.MoveTowards(transform.position, m_finalPos, m_moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, finalPos, m_moveSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
+
+        m_finished = true;  
     }
 
     public void OnRemove()
@@ -97,5 +108,6 @@ public class Rock : MonoBehaviour, IRemovable
         Destroy(m_childCoral);
         gameObject.SetActive(false);
         Stats.Sheet.m_rockCount--;
+        Stats.Sheet.m_coralCount--;
     }
 }
