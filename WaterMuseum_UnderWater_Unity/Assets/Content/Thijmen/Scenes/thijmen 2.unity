@@ -353,6 +353,12 @@ Transform:
   m_Father: {fileID: 1925735557}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &370657352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8883441682318389442, guid: 4c1d3a0f37ba7414d80aaa0f7f6b0f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1029365622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &416379061
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +492,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5553794843713110737, guid: 4c1d3a0f37ba7414d80aaa0f7f6b0f04,
     type: 3}
   m_PrefabInstance: {fileID: 2033717539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &653569771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8883441682318389442, guid: 4c1d3a0f37ba7414d80aaa0f7f6b0f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1478196859}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &733156693
 GameObject:
@@ -1353,6 +1365,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 233387797}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &982856730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8883441682318389442, guid: 4c1d3a0f37ba7414d80aaa0f7f6b0f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 2033717539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &984154765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1805,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1120958991}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1129858428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8883441682318389442, guid: 4c1d3a0f37ba7414d80aaa0f7f6b0f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 233387797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1246154060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rockName: Rock
   m_maxStones: 50
+  m_placeDelay: 0
   m_placeOffset: {x: 0, y: 1, z: 0}
   m_terrainLayer:
     serializedVersion: 2
@@ -2489,6 +2514,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals: []
+  activeFish:
+  - {fileID: 370657352}
+  - {fileID: 653569771}
+  - {fileID: 982856730}
+  - {fileID: 1129858428}
   spawnPoints:
   - {fileID: 164802214}
   - {fileID: 733156694}
