@@ -2022,7 +2022,7 @@ MonoBehaviour:
   Plasticprefab: {fileID: 5023013769596511225, guid: 048b35f98e4c5e448bce6d550be30726,
     type: 3}
   center: {x: 0, y: 50, z: 0}
-  size: {x: 61.9, y: 0, z: 29.55}
+  size: {x: 61.9, y: 0, z: 23.3}
   m_PlasticName: Plastic
   m_ofset: {x: 0, y: 0, z: 0}
 --- !u!4 &1351467861
