@@ -123,7 +123,7 @@ public class Rock : MonoBehaviour, IRemovable
         Stats.Sheet.m_rockCount--;
 
         if(m_childCoral != null)
-        Stats.Sheet.m_coralCount--;
+            Stats.Sheet.m_coralCount--;
     }
 
 }
