@@ -20,6 +20,7 @@ public class SpawnPlastic : MonoBehaviour
     void Start()
     {
         StartCoroutine(Spawnplastic(5));
+        //transform.Rotate(0.0, 0.0, Random.Range(0.0, 360.0));
     }
 
     // Update is called once per frame
@@ -37,9 +38,10 @@ public class SpawnPlastic : MonoBehaviour
     {
         while (true)
         {
+            Quaternion rndRotation = Random.rotation;
             Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
             //Instantiate(Plasticprefab, pos, Quaternion.identity);
-            ObjectPooler.SpawnObject(m_PlasticName, pos, Quaternion.identity, true);
+            ObjectPooler.SpawnObject(m_PlasticName, pos, rndRotation, true);
             Stats.Sheet.m_plasticCount++;
             yield return new WaitForSeconds(time);
         }
