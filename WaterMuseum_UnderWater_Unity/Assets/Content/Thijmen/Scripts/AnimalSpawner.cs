@@ -27,9 +27,10 @@ public class AnimalSpawner : MonoBehaviour {
             rndAnimal = Random.Range( 0 , animals.Length );
             rndSpawnLoc = Random.Range( 0 , spawnPoints.Length );
 
-            if(Stats.Sheet.m_plasticCount <= 2 && Stats.Sheet.m_coralCount >= 5) {
+            if(Stats.Sheet.m_plasticCount <= 3 && Stats.Sheet.m_coralCount >= 5) {
                 GameObject newFish = Instantiate( animals[rndAnimal] , spawnPoints[rndSpawnLoc].position , transform.rotation );
                 activeFish.Add( newFish );
+                RefreshStats();
             }
             yield return new WaitForSeconds( time );
         }
@@ -37,11 +38,18 @@ public class AnimalSpawner : MonoBehaviour {
 
     private IEnumerator DestoryAnimals(float time) {
         while(true) {
-            if(Stats.Sheet.m_plasticCount >= 2 || Stats.Sheet.m_coralCount <= 5 && activeFish.Count >= 1) {
-                Destroy( activeFish[activeFish.Count - 1].gameObject );
-                activeFish.RemoveAt( activeFish.Count - 1 );
+            if(Stats.Sheet.m_plasticCount >= 3 || Stats.Sheet.m_coralCount <= 5) {
+                if(activeFish.Count >= 1) {
+                    Destroy( activeFish[activeFish.Count - 1].gameObject );
+                    activeFish.RemoveAt( activeFish.Count - 1 );
+                    RefreshStats();
+                } 
             }
             yield return new WaitForSeconds( time );
         }
+    }
+
+    private void RefreshStats() {
+        Stats.Sheet.m_fishCount = activeFish.Count;
     }
 }
