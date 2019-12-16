@@ -44,9 +44,13 @@ public class AnimalSpawner : MonoBehaviour {
 
     private IEnumerator DestoryAnimals(float time) {
         while(true) {
-            if(Stats.Sheet.m_plasticCount >= 2 || Stats.Sheet.m_coralCount <= 5) {
-                Destroy( activeFish[activeFish.Count - 1].gameObject );
-                activeFish.RemoveAt( activeFish.Count - 1 );
+            if (activeFish.Count > 0)
+            {
+                if (Stats.Sheet.m_plasticCount >= 2 || Stats.Sheet.m_coralCount <= 5)
+                {
+                    Destroy(activeFish[activeFish.Count - 1].gameObject);
+                    activeFish.RemoveAt(activeFish.Count - 1);
+                }
             }
             yield return new WaitForSeconds( time );
         }
