@@ -5,14 +5,17 @@ using UnityEngine;
 public class AnimalSpawner : MonoBehaviour {
 
     [SerializeField] private GameObject[] animals;
+    [SerializeField] private List<GameObject> activeFish = new List<GameObject>();
     [SerializeField] private Transform[] spawnPoints;
 
-    private float spawnCheck = 5f;
+    private const float spawnCheckItr = 5f;
+    private const float destoryCheckItr = 5f;
 
 
     void Start() {
         animals = Resources.LoadAll<GameObject>( "FishModels/" );
-        StartCoroutine( SpawnAnimals( spawnCheck ) );
+        StartCoroutine( SpawnAnimals( spawnCheckItr ) );
+        StartCoroutine( DestoryAnimals( destoryCheckItr ) );
     }
 
     private IEnumerator SpawnAnimals(float time) {
@@ -21,13 +24,23 @@ public class AnimalSpawner : MonoBehaviour {
 
         while(true) {
 
-            rndAnimal = Random.Range( 0 , animals.Length);
-            rndSpawnLoc = Random.Range( 0 , spawnPoints.Length);
+            rndAnimal = Random.Range( 0 , animals.Length );
+            rndSpawnLoc = Random.Range( 0 , spawnPoints.Length );
 
-            if(Stats.Sheet.m_plasticCount <= 2 && Stats.Sheet.m_rockCount >= 5) {
-                Instantiate( animals[rndAnimal] , spawnPoints[rndSpawnLoc].position , transform.rotation );
+            if(Stats.Sheet.m_plasticCount <= 2 && Stats.Sheet.m_coralCount >= 5) {
+                GameObject newFish = Instantiate( animals[rndAnimal] , spawnPoints[rndSpawnLoc].position , transform.rotation );
+                activeFish.Add( newFish );
             }
+            yield return new WaitForSeconds( time );
+        }
+    }
 
+    private IEnumerator DestoryAnimals(float time) {
+        while(true) {
+            if(Stats.Sheet.m_plasticCount >= 2 || Stats.Sheet.m_coralCount <= 5) {
+                Destroy( activeFish[activeFish.Count - 1].gameObject );
+                activeFish.RemoveAt( activeFish.Count - 1 );
+            }
             yield return new WaitForSeconds( time );
         }
     }
