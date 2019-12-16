@@ -17,10 +17,9 @@ public class Rock : MonoBehaviour, IRemovable
     private float m_timeAlive = 0;
     private bool m_finished;
 
-
     [Header("Coral")]
     [SerializeField] private Vector2 m_randomCoralSize;
-    [SerializeField] private GameObject m_coralPrefabs;
+    [SerializeField] private GameObject[] m_coralPrefabs;
     [SerializeField] private float m_coralPostionOffset;
     private GameObject m_childCoral;
     private float m_coralSize;
@@ -36,7 +35,7 @@ public class Rock : MonoBehaviour, IRemovable
         if (meshFilter != null)
         {
             m_meshFilter = meshFilter;
-            meshFilter.mesh = m_rockMeshes[Random.Range(0, m_rockMeshes.Length)];
+            m_meshFilter.mesh = m_rockMeshes[Random.Range(0, m_rockMeshes.Length)];
 
             MeshCollider meshCollider = GetComponent<MeshCollider>();
             if (meshCollider != null)
@@ -74,13 +73,27 @@ public class Rock : MonoBehaviour, IRemovable
 
                 m_coralSize = Random.Range(m_randomCoralSize.x, m_randomCoralSize.y);
 
-                Vector3[] vertices = m_meshFilter.mesh.vertices;
+                Vector3[] verteces = m_meshFilter.mesh.vertices;
+                List<Vector3> pickVertex = new List<Vector3>();
+                for (int i = 0; i < verteces.Length; i++)
+                {
+                    float height = (transform.rotation * verteces[i]).y;
+                    if (height > 0.3f)
+                    {
+                        pickVertex.Add(verteces[i]);
+                    }
+                }
 
-
-                Vector3 spawnPos = (vertices[Random.Range(0, vertices.Length)] * m_finalSize) + transform.position;
-                Debug.DrawLine(spawnPos, transform.position, Color.red, 10f);
-                m_childCoral = Instantiate(m_coralPrefabs, spawnPos, Quaternion.identity);
-                Stats.Sheet.m_coralCount++;
+                if (pickVertex.Count > 0)
+                {
+                    Vector3 vertex = pickVertex[Random.Range(0, pickVertex.Count)];
+                    Vector3 spawnPos = transform.rotation * (vertex * m_finalSize) + transform.position + Vector3.down * 0.15f;
+                    Vector3 direction = spawnPos - transform.position;
+                    Quaternion toRot = Quaternion.LookRotation(direction, Vector3.up);
+                    m_childCoral = Instantiate(m_coralPrefabs[Random.Range(0, m_coralPrefabs.Length)], spawnPos, Quaternion.Slerp((toRot * Quaternion.Euler(90,0,0)),Quaternion.identity, 0.9f));
+                    m_childCoral.transform.localScale = Vector3.zero;
+                    Stats.Sheet.m_coralCount++;
+                }
 
             }
             else
@@ -108,6 +121,11 @@ public class Rock : MonoBehaviour, IRemovable
         Destroy(m_childCoral);
         gameObject.SetActive(false);
         Stats.Sheet.m_rockCount--;
+
+        if(m_childCoral != null)
         Stats.Sheet.m_coralCount--;
     }
+
 }
+
+

@@ -123,8 +123,10 @@ MonoBehaviour:
   - {fileID: 7309613514892262955, guid: 1e77e4e2923a81646afa48583fde4c73, type: 3}
   m_rigidbody: {fileID: 9011616624752922997}
   m_randomCoralSize: {x: 1, y: 4}
-  m_coralPrefabs: {fileID: 3092401270805740916, guid: 8bcfc7480d5081f429a48261a8b1e71a,
-    type: 3}
+  m_coralPrefabs:
+  - {fileID: 3973664421548010002, guid: 6b353400387d938479c4e0a9ef4a7aed, type: 3}
+  - {fileID: 1484746882608816895, guid: 076a27cb81dc3bb41b214776f89f07dc, type: 3}
+  - {fileID: 3092401270805740916, guid: 8bcfc7480d5081f429a48261a8b1e71a, type: 3}
   m_coralPostionOffset: 0.5
 --- !u!64 &7388844039589737668
 MeshCollider:

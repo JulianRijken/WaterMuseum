@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rockName: Rock
   m_maxStones: 50
-  m_placeDelay: 1
+  m_placeDelay: 0.2
   m_placeOffset: {x: 0, y: 1, z: 0}
   m_terrainLayer:
     serializedVersion: 2
@@ -1737,6 +1737,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f13f27d81659744597ebc2b54db683e, type: 3}
+--- !u!1 &1755917786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3254528650467107450, guid: 5c6d81f03552f0a4fb346a1b021bcea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2032639714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1755917787
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755917786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3570458547876811978, guid: 105b08292fb082340a806f31a8c790ac, type: 3}
 --- !u!1 &1787191239
 GameObject:
   m_ObjectHideFlags: 0
