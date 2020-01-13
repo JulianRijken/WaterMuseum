@@ -1475,6 +1475,7 @@ MonoBehaviour:
     type: 3}
   center: {x: 0, y: 50, z: 0}
   size: {x: 47.4, y: 0, z: 18.1}
+  plastic_Time: 10
   m_PlasticName: Plastic
   m_ofset: {x: 0, y: 0, z: 0}
 --- !u!4 &1351467861
