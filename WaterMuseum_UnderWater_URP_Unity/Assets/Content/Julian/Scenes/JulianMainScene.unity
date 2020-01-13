@@ -235,8 +235,7 @@ MonoBehaviour:
     m_startSize: 50
     m_name: Rock
   - m_pooledObjects: []
-    m_object: {fileID: 5023013769596511225, guid: 048b35f98e4c5e448bce6d550be30726,
-      type: 3}
+    m_object: {fileID: 3776726483958971, guid: 7b93a29f97428e144b70e60be0ad45fe, type: 3}
     m_startSize: 50
     m_name: Plastic
 --- !u!1 &337690445
@@ -1411,7 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cb6d4db68a4d84691942cb7d142606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plasticprefab: {fileID: 5023013769596511225, guid: 048b35f98e4c5e448bce6d550be30726,
+  Plasticprefab: {fileID: 3776726483958971, guid: 7b93a29f97428e144b70e60be0ad45fe,
     type: 3}
   center: {x: 0, y: 50, z: 0}
   size: {x: 47.4, y: 0, z: 18.1}

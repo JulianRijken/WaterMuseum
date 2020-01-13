@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3818910641444611531}
   - component: {fileID: 458911629757292901}
   m_Layer: 10
-  m_Name: TestPlastic
+  m_Name: Plastic Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
