@@ -34,7 +34,7 @@ public class AnimalSpawner : MonoBehaviour {
             rndAnimal = Random.Range( 0 , animals.Length );
             rndSpawnLoc = Random.Range( 0 , spawnPoints.Count );
 
-            if(Stats.Sheet.m_plasticCount <= 2 && Stats.Sheet.m_coralCount >= 5 && Stats.Sheet.m_fishCount < 10) {
+            if(Stats.Sheet.m_plasticCount <= 3 && Stats.Sheet.m_coralCount >= 5 && Stats.Sheet.m_fishCount < 10) {
                 GameObject newFish = Instantiate( animals[rndAnimal] , spawnPoints[rndSpawnLoc].position , transform.rotation );
                 activeFish.Add( newFish );
                 Stats.Sheet.m_fishCount++;
