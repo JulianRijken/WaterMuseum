@@ -238,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &337690447
 MonoBehaviour:
@@ -917,7 +917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -1260,7 +1260,7 @@ Transform:
   m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 45.502003, y: -39.344, z: -7.2160006}
 --- !u!1 &1351467859
 GameObject:
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   Plasticprefab: {fileID: 5023013769596511225, guid: 048b35f98e4c5e448bce6d550be30726,
     type: 3}
   center: {x: 0, y: 50, z: 0}
-  size: {x: 61.9, y: 0, z: 29.55}
+  size: {x: 47.4, y: 0, z: 18.1}
   m_PlasticName: Plastic
   m_ofset: {x: 0, y: 0, z: 0}
 --- !u!4 &1351467861
@@ -1579,7 +1579,7 @@ RectTransform:
   - {fileID: 812990235}
   - {fileID: 787052927}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1912,7 +1912,7 @@ PrefabInstance:
     - target: {fileID: 3776012484080681978, guid: b6570585329c02e40963024650a4ef47,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3776012484080681978, guid: b6570585329c02e40963024650a4ef47,
         type: 3}
