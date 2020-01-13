@@ -8,6 +8,7 @@ public class SpawnPlastic : MonoBehaviour
     public GameObject Plasticprefab;
     public Vector3 center;
     public Vector3 size;
+    [SerializeField] float plastic_Time;
 
     [SerializeField] string m_PlasticName;
     [SerializeField] private Vector3 m_ofset;
@@ -19,7 +20,7 @@ public class SpawnPlastic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawnplastic(5));
+        StartCoroutine(Spawnplastic(plastic_Time));
         //transform.Rotate(0.0, 0.0, Random.Range(0.0, 360.0));
     }
 
