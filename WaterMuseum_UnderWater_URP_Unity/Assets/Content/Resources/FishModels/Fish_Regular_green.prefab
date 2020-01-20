@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8279448626838378761}
   - component: {fileID: 2048154219807552627}
+  - component: {fileID: 5797418416011080007}
   m_Layer: 0
   m_Name: Fish_Regular_green
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 4953356439484295962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2735833034862282515}
   - {fileID: 2318631753442296244}
@@ -144,6 +145,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5797418416011080007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953356439484295962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ca139f5615356448b39070452d7b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  rotSpeed: 100
+  reach: 2
 --- !u!1 &5325514880401525535
 GameObject:
   m_ObjectHideFlags: 0

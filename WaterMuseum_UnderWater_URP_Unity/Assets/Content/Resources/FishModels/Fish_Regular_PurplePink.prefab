@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458191849195799611}
   - component: {fileID: 7553047635479701825}
+  - component: {fileID: 8547804123472037669}
   m_Layer: 0
   m_Name: Fish_Regular_PurplePink
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3458917173162767912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5857758155239938593}
   - {fileID: 6093439480312175750}
@@ -52,6 +53,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8547804123472037669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458917173162767912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ca139f5615356448b39070452d7b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  rotSpeed: 100
+  reach: 2
 --- !u!1 &4419533402162877997
 GameObject:
   m_ObjectHideFlags: 0

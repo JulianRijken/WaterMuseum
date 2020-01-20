@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7564021774411721784}
   - component: {fileID: 464660743396376898}
+  - component: {fileID: -5881299594321808183}
   m_Layer: 0
   m_Name: Fish_Regular_Cyaan
   m_TagString: Untagged
@@ -235,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 6819457412462255659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4605474554386821666}
   - {fileID: 4193731245562393733}
@@ -261,3 +262,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5881299594321808183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819457412462255659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ca139f5615356448b39070452d7b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  rotSpeed: 100
+  reach: 2

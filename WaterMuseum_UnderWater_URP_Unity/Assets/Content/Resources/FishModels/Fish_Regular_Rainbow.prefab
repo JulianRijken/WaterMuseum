@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6074606516523215109}
   - component: {fileID: 4235448191144100991}
+  - component: {fileID: -8971200509736462843}
   m_Layer: 0
   m_Name: Fish_Regular_Rainbow
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 7067853886953184022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 9.799, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 242197671024097055}
   - {fileID: 470269447948546488}
@@ -144,6 +145,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8971200509736462843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7067853886953184022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ca139f5615356448b39070452d7b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  rotSpeed: 100
+  reach: 2
 --- !u!1 &7854000577100165182
 GameObject:
   m_ObjectHideFlags: 0
