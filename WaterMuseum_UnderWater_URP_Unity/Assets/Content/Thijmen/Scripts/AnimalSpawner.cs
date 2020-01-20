@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AnimalSpawner : MonoBehaviour {
 
-    private GameObject[] animals;
-    private List<GameObject> activeFish = new List<GameObject>();
-    private List<Transform> spawnPoints = new List<Transform>();
+    [SerializeField] private GameObject[] animals;
+    [SerializeField] private List<GameObject> activeFish = new List<GameObject>();
+    [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
 
     private const float spawnCheckItr = 5f;
     private const float destoryCheckItr = 5f;
