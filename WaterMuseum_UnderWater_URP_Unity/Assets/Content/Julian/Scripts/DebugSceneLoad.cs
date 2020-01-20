@@ -7,10 +7,10 @@ public class DebugSceneLoad : MonoBehaviour
 {
     private void Awake()
     {
-        if (DevPreload.currentSceneIndex != SceneManager.GetActiveScene().buildIndex)
-        {
+        if (DevPreload.currentSceneIndex != SceneManager.GetActiveScene().buildIndex)       
             SceneManager.LoadScene(DevPreload.currentSceneIndex);
-        }
+        
+
         Destroy(this);
     }
 }
