@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1246154061}
-  m_IndirectSpecularColor: {r: 0.44809085, g: 0.4981017, b: 0.5755345, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1238,12 +1238,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1120958991}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1129858428 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8883441682318389442, guid: 4c1d3a0f37ba7414d80aaa0f7f6b0f04,
-    type: 3}
-  m_PrefabInstance: {fileID: 233387797}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1246154060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1447,7 @@ MonoBehaviour:
     type: 3}
   center: {x: 0, y: 50, z: 0}
   size: {x: 61.9, y: 0, z: 29.55}
+  plastic_Time: 0
   m_PlasticName: Plastic
   m_ofset: {x: 0, y: 0, z: 0}
 --- !u!4 &1351467861
@@ -1855,7 +1850,7 @@ PrefabInstance:
         type: 3}
       propertyPath: activeFish.Array.data[3]
       value: 
-      objectReference: {fileID: 1129858428}
+      objectReference: {fileID: 0}
     - target: {fileID: 2248745881392463800, guid: 23afa36183e356f4aa5063600d57fb62,
         type: 3}
       propertyPath: spawnPoints.Array.data[0]
@@ -2031,6 +2026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MantaRay (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 891653829465746386, guid: 2307a34e438ec6748979fe3af2d00597,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180628772195326401, guid: 2307a34e438ec6748979fe3af2d00597,
         type: 3}
