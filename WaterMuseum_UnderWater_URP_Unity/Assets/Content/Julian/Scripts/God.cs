@@ -8,6 +8,7 @@ public class God : MonoBehaviour
     [SerializeField] string m_rockName;
     [SerializeField] private int m_maxStones;
     [SerializeField] private float m_placeDelay;
+    [SerializeField] private float m_maxRockHeight;
     [SerializeField] private Vector3 m_placeOffset;
     [SerializeField] private LayerMask m_terrainLayer;
     [SerializeField] private LayerMask m_removeLayer;
@@ -59,10 +60,13 @@ public class God : MonoBehaviour
                             {
                                 if (m_placeAllowed)
                                 {
-                                    StartCoroutine(DelayRock());
-                                    Vector3 spawnPoint = hit.point + m_placeOffset;
-                                    ObjectPooler.SpawnObject(m_rockName, spawnPoint + m_placeOffset, Quaternion.identity, true);
-                                    Stats.Sheet.m_rockCount++;
+                                    if (hit.point.y < m_maxRockHeight)
+                                    {
+                                        StartCoroutine(DelayRock());
+                                        Vector3 spawnPoint = hit.point + m_placeOffset;
+                                        ObjectPooler.SpawnObject(m_rockName, spawnPoint + m_placeOffset, Quaternion.identity, true);
+                                        Stats.Sheet.m_rockCount++;
+                                    }
                                 }
                             }
                         }

@@ -10,6 +10,7 @@ public class DevPreload : MonoBehaviour
 
     public static int currentSceneIndex;
 
+#if UNITY_EDITOR
     private void Awake()
     {
         GameObject check = GameObject.Find(appGameObjectName);
@@ -21,4 +22,6 @@ public class DevPreload : MonoBehaviour
         }
 
     }
+#endif
+
 }
