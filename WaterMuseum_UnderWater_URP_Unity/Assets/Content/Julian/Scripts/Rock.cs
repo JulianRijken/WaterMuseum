@@ -11,6 +11,7 @@ public class Rock : MonoBehaviour, IRemovable
     [SerializeField] private float m_moveSpeed;
     [SerializeField] private Mesh[] m_rockMeshes;
     [SerializeField] private Rigidbody m_rigidbody;
+    [SerializeField] private GameObject m_distroyDust;
     private MeshFilter m_meshFilter;
     private StatsSheet m_stats;
     private float m_finalSize;
@@ -118,6 +119,7 @@ public class Rock : MonoBehaviour, IRemovable
 
     public void OnRemove()
     {
+        Instantiate(m_distroyDust,transform.position,transform.rotation);
         Destroy(m_childCoral);
         gameObject.SetActive(false);
         Stats.Sheet.m_rockCount--;
