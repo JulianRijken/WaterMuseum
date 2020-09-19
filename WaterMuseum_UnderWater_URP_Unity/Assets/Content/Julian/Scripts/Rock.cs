@@ -1,36 +1,40 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Rock : MonoBehaviour, IRemovable
 {
+
+    [Header("Rock Settings")]
     [SerializeField] private float m_stopVelocity;
     [SerializeField] private float m_stopAngularVelocity;
     [SerializeField] private float m_stopLifeTime;
     [SerializeField] private float m_groundDistance;
     [SerializeField] private float m_moveSpeed;
     [SerializeField] private Mesh[] m_rockMeshes;
+
+    [Header("Components")]
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private GameObject m_distroyDust;
     private MeshFilter m_meshFilter;
     private StatsSheet m_stats;
-    private float m_finalSize;
-    private float m_timeAlive = 0;
-    private bool m_finished;
 
-    [Header("Coral")]
+    [Header("Coral Settings")]
     [SerializeField] private Vector2 m_randomCoralSize;
     [SerializeField] private GameObject[] m_coralPrefabs;
     [SerializeField] private float m_coralPostionOffset;
-    private GameObject m_childCoral;
+
+
     private float m_coralSize;
+    private float m_finalSize;
+    private float m_timeAlive = 0;
+    private bool m_finished = false;
+    private GameObject m_childCoral;
 
 
     private void Start()
     {
-
         m_stats = Stats.Sheet;
-        m_finished = false;
 
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if (meshFilter != null)
@@ -67,7 +71,7 @@ public class Rock : MonoBehaviour, IRemovable
                 StartCoroutine(MoveToFinalPos(finalPos));
             }
         }
-        else if(m_finished)
+        else if (m_finished)
         {
             if (m_childCoral == null)
             {
@@ -91,7 +95,7 @@ public class Rock : MonoBehaviour, IRemovable
                     Vector3 spawnPos = transform.rotation * (vertex * m_finalSize) + transform.position + Vector3.down * 0.15f;
                     Vector3 direction = spawnPos - transform.position;
                     Quaternion toRot = Quaternion.LookRotation(direction, Vector3.up);
-                    m_childCoral = Instantiate(m_coralPrefabs[Random.Range(0, m_coralPrefabs.Length)], spawnPos, Quaternion.Slerp((toRot * Quaternion.Euler(90,0,0)),Quaternion.identity, 0.9f));
+                    m_childCoral = Instantiate(m_coralPrefabs[Random.Range(0, m_coralPrefabs.Length)], spawnPos, Quaternion.Slerp((toRot * Quaternion.Euler(90, 0, 0)), Quaternion.identity, 0.9f));
                     m_childCoral.transform.localScale = Vector3.zero;
                     Stats.Sheet.m_coralCount++;
                 }
@@ -102,32 +106,29 @@ public class Rock : MonoBehaviour, IRemovable
                 m_childCoral.transform.localScale = Vector3.MoveTowards(m_childCoral.transform.localScale, Vector3.one * m_coralSize, Time.deltaTime);
             }
 
-            
         }
     }
 
     private IEnumerator MoveToFinalPos(Vector3 finalPos)
     {
-        while(transform.position != finalPos)
+        while (transform.position != finalPos)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPos, m_moveSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
 
-        m_finished = true;  
+        m_finished = true;
     }
 
     public void OnRemove()
     {
-        Instantiate(m_distroyDust,transform.position,transform.rotation);
+        Instantiate(m_distroyDust, transform.position, transform.rotation);
         Destroy(m_childCoral);
         gameObject.SetActive(false);
         Stats.Sheet.m_rockCount--;
 
-        if(m_childCoral != null)
+        if (m_childCoral != null)
             Stats.Sheet.m_coralCount--;
     }
 
 }
-
-
