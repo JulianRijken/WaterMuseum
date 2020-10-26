@@ -15,7 +15,6 @@ public class VisManager : MonoBehaviour
     {
         if(GameObject.FindGameObjectsWithTag("Koraal").Length > 10)
         {
-            //doe iets
         }
 
     }
